@@ -20,6 +20,9 @@ else:
 def slickgrid(data, columns, options=None, on_click=None, key=None):
     """Display a SlickGrid component.
 
+    The best way to learn use SlickGrid is to check out the demos at:
+    - https://ghiscoding.github.io/slickgrid-react-demos/#/example1
+
     Parameters
     ----------
     data: list of dict
