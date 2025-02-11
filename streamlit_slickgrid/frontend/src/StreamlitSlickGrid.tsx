@@ -28,8 +28,11 @@ function StreamlitSlickGrid({ args, disabled, theme }: ComponentProps): ReactEle
     if (ev.detail.eventData?.target?.classList.contains("slick-group-toggle"))
       return
 
+    const data = ev.detail.args.grid.data
+    const rowId = data.rows[ev.detail.args.row][data.idProperty]
+
     Streamlit.setComponentValue([
-      ev.detail.args.row,
+      rowId,
       ev.detail.args.cell,
     ])
   }, [])
