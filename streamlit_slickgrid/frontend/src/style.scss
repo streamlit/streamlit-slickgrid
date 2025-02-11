@@ -1,0 +1,18 @@
+@use '@slickgrid-universal/common/dist/styles/sass/slickgrid-theme-bootstrap.scss' with (
+  $slick-font-family: var(--font),
+);
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font);
+}
+
+.slickgrid-container .form-group {
+  /* Fix issue with date filter position */
+  margin: 0;
+}
+
+.slickgrid-container * {
+  font-family: var(--font) !important;
+}

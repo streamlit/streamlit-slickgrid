@@ -1,0 +1,47 @@
+{
+  "name": "streamlit-slickgrid",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7",
+    "@slickgrid-universal/excel-export": "^5.12.2",
+    "@slickgrid-universal/text-export": "^5.12.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "slickgrid-react": "^5.12.2",
+    "streamlit-component-lib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "react-scripts": "^5.0.1",
+    "sass": "^1.84.0",
+    "typescript": "^4.9.5"
+  },
+  "overrides": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
