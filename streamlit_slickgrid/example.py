@@ -18,6 +18,7 @@ st.set_page_config(
 )
 
 
+@st.cache_resource
 def mockData(count):
     mockDataset = []
 
@@ -68,8 +69,10 @@ def mockData(count):
 # SlickGrid-Streamlit demo
 """
 
+data = mockData(1000)
+
 data = add_tree_info(
-    mockData(1000),
+    data,
     tree_fields=["milestone", "epic", "task"],
     join_fields_as="title",
 )
@@ -154,6 +157,8 @@ columns = [
 ]
 
 options = {
+    #
+    # Allow filtering (based on column filter* properties)
     "enableFiltering": True,
     #
     # You could debounce/throttle the input text filter if you have lots of data
@@ -181,6 +186,7 @@ options = {
     "autoResize": {
         "minHeight": 500,
     },
+    #
     # You must enable this flag for the filtering & sorting to work as expected
     "enableTreeData": True,
     "treeDataOptions": {
@@ -213,5 +219,3 @@ def show_dialog(item):
 if out is not None:
     row, col = out
     show_dialog(data[row])
-
-st.markdown(f"Return: {out}")

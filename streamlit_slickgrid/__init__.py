@@ -46,7 +46,7 @@ def slickgrid(data, columns, options=None, on_click=None, key=None):
 
 
 def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
-    """Calculates tree fields __indent and __parent from data structure.
+    """Calculates tree fields __indent and __parent from data structure. Returns a new data array.
 
     For example:
 
@@ -100,6 +100,7 @@ def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
               └─ C5  P6
     """
 
+    new_data = []
     parents = []
 
     for i, item in enumerate(data):
@@ -120,17 +121,20 @@ def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
                 parents = parents[:num_equal_fields]
 
         P = len(parents)
-        item["__indent"] = P
+        new_item = {**item}
+        new_data.append(new_item)
+
+        new_item["__indent"] = P
 
         if P > 0:
-            item["__parent"] = parents[-1][id_field]
+            new_item["__parent"] = parents[-1][id_field]
         else:
-            item["__parent"] = None
+            new_item["__parent"] = None
 
         if join_fields_as is not None:
-            item[join_fields_as] = item[tree_fields[P]]
+            new_item[join_fields_as] = new_item[tree_fields[P]]
 
-    return data
+    return new_data
 
 
 class _JsModuleProxy:
