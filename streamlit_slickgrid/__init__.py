@@ -1,3 +1,4 @@
+import streamlit as st
 import os
 import streamlit.components.v1 as components
 
@@ -33,6 +34,10 @@ def slickgrid(data, columns, options=None, on_click=None, key=None):
         No return.
 
     """
+    session_key = f"-streamlit-slickgrid-{key}"
+    if session_key not in st.session_state:
+        st.session_state[session_key] = None
+
     component_value = _component_func(
         data=data,
         columns=columns,
@@ -42,7 +47,14 @@ def slickgrid(data, columns, options=None, on_click=None, key=None):
         default=None,
     )
 
-    return component_value
+    change_detected = component_value != st.session_state[session_key]
+
+    st.session_state[session_key] = component_value
+
+    if change_detected:
+        return component_value
+    else:
+        return None
 
 
 def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
