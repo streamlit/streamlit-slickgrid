@@ -1,4 +1,4 @@
-import React, { useCallback, useState, ReactElement } from "react"
+import React, { useCallback, useEffect, useState, ReactElement } from "react"
 import {
   FieldType,
   Filters,
@@ -18,9 +18,15 @@ import {
 import "./style.scss"
 
 function StreamlitSlickGrid({ args, disabled, theme }: ComponentProps): ReactElement {
-  const [columns, useColumns] = useState(() => replaceJsStrings(args.columns))
+  const [columns, setColumns] = useState(() => replaceJsStrings(args.columns))
   const [options, setOptions] = useState(() => replaceJsStrings(args.options))
   const [data, setData] = useState(args.data)
+
+  useEffect(() => {
+    setColumns(replaceJsStrings(args.columns))
+    setOptions(replaceJsStrings(args.options))
+    setData(args.data)
+  }, [args, args.data, args.columns, args.options])
 
   // @ts-ignore
   const onClick = useCallback((ev) => {
