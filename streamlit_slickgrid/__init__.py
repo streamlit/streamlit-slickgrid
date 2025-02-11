@@ -22,16 +22,43 @@ def slickgrid(data, columns, options=None, on_click=None, key=None):
 
     Parameters
     ----------
-    data: pandas.DataFrame
+    data: list of dict
+        The dataset to display, as a list of dicts. For example:
+
+        data = [
+          {"id": 0, "continent": "america", "revenue": 20000, "paused": False},
+          {"id": 1, "continent": "africa",  "revenue": 40100, "paused": False},
+          {"id": 2, "continent": "asia",    "revenue": 10300, "paused": True},
+          {"id": 3, "continent": "europe",  "revenue": 30200, "paused": False},
+          ...
+        ]
+
     columns: list of dict
+        Column definitions. Which columns to show, how to show them, how to
+        filter them, etc.
+
+        See full list of options at:
+        - https://github.com/ghiscoding/slickgrid-universal/blob/master/packages/common/src/interfaces/column.interface.ts#L40
+
+        Not all column options are supported, though!
+
     options: dict or None
+        Global grid options.
+
+        See full list of options at:
+        - https://github.com/ghiscoding/slickgrid-universal/blob/master/packages/common/src/interfaces/gridOption.interface.ts#L76
+
+        Not all grid options are supported, though!
+
     on_click: "rerun", "ignore", or None
-        Custom Components do not support callbacks :(
+        If "rerun", then the clicked cell [row, col] will be returned
+        by this function.
 
     Returns
     -------
-    None
-        No return.
+    None or list of numbers
+        If on_click is set to "rerun", the [row, col] indices of the clicked
+        cell is returned. Otherwise, None.
 
     """
     session_key = f"-streamlit-slickgrid-{key}"
@@ -58,9 +85,32 @@ def slickgrid(data, columns, options=None, on_click=None, key=None):
 
 
 def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
-    """Calculates tree fields __indent and __parent from data structure. Returns a new data array.
+    """Calculates tree fields data's structure. Returns a new data array.
 
-    For example:
+    Parameters
+    ----------
+    data: list of dict
+        See slickgrid() data field.
+
+    tree_fields: list of str
+        List with name of fields to coalesce into a tree structure.
+
+    join_fields_as: str
+        Name of the new column that will be added with the coalesced fields.
+
+    id_field: str
+        Name of the ID field used in data. Defaults to "id".
+
+    Returns
+    -------
+    list of dict
+        A copy of the data, but with 3 additional fields:
+        - The join field: see join_field_as
+        - __parent: a field holding parent/child relationships
+        - __depth: a field holding parent/child depth information
+
+    Example
+    -------
 
         Let's say `data` has the form:
 
@@ -71,7 +121,7 @@ def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
             add_tree_info(data, ["continent", "country", "city"])
 
         And end up with something like:
-            __parent __indent id continent country city population
+            __parent __depth id continent country city population
             None     0        0  A0        None    None P1
             0        1        1  A0        B1      C1   P2
             None     0        2  A2        None    None P3
@@ -92,7 +142,7 @@ def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
         You can also set join_fields_as to some string "my_field" to join
         all the tree fields into a new column, like this:
 
-            __parent __indent id my_field continent country city population
+            __parent __depth id my_field continent country city population
             None     0        0  A0       A0        None    None P1
             0        1        1  B1       A0        B1      C1   P2
             None     0        2  A2       A2        None    None P3
@@ -136,7 +186,7 @@ def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
         new_item = {**item}
         new_data.append(new_item)
 
-        new_item["__indent"] = P
+        new_item["__depth"] = P
 
         if P > 0:
             new_item["__parent"] = parents[-1][id_field]
@@ -150,6 +200,8 @@ def add_tree_info(data, tree_fields, join_fields_as=None, id_field="id"):
 
 
 class _JsModuleProxy:
+    """Dummy class that produces strings pointing to JS functions."""
+
     def __init__(self, js_module_name):
         self.name = js_module_name
 
@@ -165,11 +217,12 @@ def __getattr__(js_module_name):
         Foo.bar
         # Returns "js$Foo.bar"!
 
-    Why this is useful: SlickGrid's options are often JS functions that you need to pass by
-    reference, and this allows us to pass them by name instead (since it's not possible to pass
-    a function safely from Python to JS).
+    Why this is useful: SlickGrid's options are often JS functions that you
+    need to pass by reference, and this allows us to pass them by name
+    instead (since it's not possible to pass a function safely from Python
+    to JS).
 
-    On the JS side, see `replaceJsStrings`.
-
+    This allows you to use any of the modules listed in the MODULE_PROXIES
+    object, on the JS side.
     """
     return _JsModuleProxy(js_module_name)
