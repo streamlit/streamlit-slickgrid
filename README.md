@@ -2,6 +2,12 @@
 
 A wrapper that allows you to use [SlickGrid](https://github.com/ghiscoding/slickgrid-universal) in Streamlit.
 
+View demo:
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://slickgrid.streamlit.app/)
+
+IMPORTANT: This is not an officially-maintained package by Streamlit. We built this to "scratch our own itch" with some internal Finance folks who needed it for their apps. Consider this a community project, for all intents and purposes. That said, we think it's awesome :)
+
 ## Installation instructions
 
 ```sh
@@ -10,11 +16,13 @@ pip install streamlit-slickgrid
 
 ## Usage instructions
 
-See [streamlit_slickgrid/example.py](https://github.com/sfc-gh-tteixeira/streamlit-slickgrid/blob/main/streamlit_slickgrid/example.py).
+See [streamlit_slickgrid/example.py](https://github.com/streamlit/streamlit-slickgrid/blob/main/streamlit_slickgrid/example.py).
 
 ## Contributing
 
-On one terminal:
+### Development setup
+
+In one terminal:
 
 ```sh
 cd [this folder]
@@ -24,7 +32,7 @@ pip install -e .[dev]
 streamlit run streamlit_slickgrid/example.py
 ```
 
-On another terminal:
+In another terminal:
 
 ```sh
 cd [this folder]
@@ -33,7 +41,7 @@ npm install
 npm run start
 ```
 
-## Building wheel file
+### Building wheel file
 
 ```sh
 cd [this folder]
