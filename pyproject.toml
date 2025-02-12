@@ -9,7 +9,7 @@ readme = "README.md"
 keywords = []
 #maintainers = []
 license = { text = "Apache 2.0" }
-requires-python = ">=3.7.0"
+requires-python = ">=3.9.0"
 dependencies = [
   # Version picked at random.
   "streamlit >= 1.20.0",
