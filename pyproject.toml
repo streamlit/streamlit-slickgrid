@@ -1,6 +1,6 @@
 [project]
 name = "streamlit-slickgrid"
-version = "0.1.10" # Also update src/frontend/package.json
+version = "0.1.11" # Also update src/frontend/package.json
 authors = [
   { name = "Thiago Teixeira", email = "thiago.teixeira@snowflake.com" },
 ]
