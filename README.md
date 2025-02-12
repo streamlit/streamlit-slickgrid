@@ -16,7 +16,7 @@ pip install streamlit-slickgrid
 
 ## Usage instructions
 
-See [streamlit_slickgrid/examples/streamlit_app.py](https://github.com/streamlit/streamlit-slickgrid/blob/main/streamlit_slickgrid/example/streamlit_app.py).
+See [examples/streamlit_app.py](https://github.com/streamlit/streamlit-slickgrid/blob/main/examples/streamlit_app.py).
 
 ## Contributing
 
