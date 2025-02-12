@@ -1,7 +1,8 @@
 {
   "name": "streamlit-slickgrid",
-  "version": "0.1.0",
+  "version": "0.1.9",
   "private": true,
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

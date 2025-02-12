@@ -1,0 +1,35 @@
+[project]
+name = "streamlit-slickgrid"
+version = "0.1.9" # Also update src/frontend/package.json
+authors = [
+  { name = "Thiago Teixeira", email = "thiago.teixeira@snowflake.com" },
+]
+description = "A Streamlit component that wraps SlickGrid"
+readme = "README.md"
+keywords = []
+#maintainers = []
+license = { text = "Apache 2.0" }
+requires-python = ">=3.7.0"
+dependencies = [
+  # Version picked at random.
+  "streamlit >= 1.20.0",
+]
+classifiers = []
+dynamic = []
+entry-points = {}
+gui-scripts = {}
+scripts = {}
+urls = {}
+
+[build-system]
+requires = ["build", "setuptools"]
+
+[tool.setuptools]
+# Fix a bug in setuptools.
+# See: https://github.com/astral-sh/uv/issues/9513
+# Remove this when setuptools is fixed.
+license-files = []
+
+[tool.setuptools.packages.find]
+include = ["streamlit_slickgrid"]
+# See also MANIFEST.in
