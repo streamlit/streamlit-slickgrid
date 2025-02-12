@@ -84,6 +84,8 @@ def mockData(count):
 
 """
 # Streamlit-SlickGrid demo
+
+For more info, see https://github.com/streamlit/streamlit-slickgrid.
 """
 
 # streamlit-slickgrid requires the data to be a list of dicts.
