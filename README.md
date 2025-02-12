@@ -2,6 +2,8 @@
 
 A wrapper that allows you to use [SlickGrid](https://github.com/ghiscoding/slickgrid-universal) in Streamlit.
 
+NOTE: This is not an officially-maintained package by Streamlit. We built this to "scratch our own itch" with some internal Finance folks who needed it for their apps. Consider this a community project, for all intents and purposes. That said, we think it's awesome :)
+
 ## Installation instructions
 
 ```sh
