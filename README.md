@@ -16,7 +16,9 @@ See [streamlit_slickgrid/example.py](https://github.com/sfc-gh-tteixeira/streaml
 
 ## Contributing
 
-On one terminal:
+### Development setup
+
+In one terminal:
 
 ```sh
 cd [this folder]
@@ -26,7 +28,7 @@ pip install -e .[dev]
 streamlit run streamlit_slickgrid/example.py
 ```
 
-On another terminal:
+In another terminal:
 
 ```sh
 cd [this folder]
@@ -35,7 +37,7 @@ npm install
 npm run start
 ```
 
-## Building wheel file
+### Building wheel file
 
 ```sh
 cd [this folder]
