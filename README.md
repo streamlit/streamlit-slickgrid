@@ -16,7 +16,7 @@ pip install streamlit-slickgrid
 
 ## Usage instructions
 
-See [streamlit_slickgrid/example.py](https://github.com/streamlit/streamlit-slickgrid/blob/main/streamlit_slickgrid/example.py).
+See [streamlit_slickgrid/examples/streamlit_app.py](https://github.com/streamlit/streamlit-slickgrid/blob/main/streamlit_slickgrid/example/streamlit_app.py).
 
 ## Contributing
 
@@ -29,7 +29,7 @@ cd [this folder]
 python -m venv .venv # One-time only.
 source .venv/bin/activate
 pip install -e .[dev]
-streamlit run streamlit_slickgrid/example.py
+streamlit run streamlit_slickgrid/examples/streamlit_app.py
 ```
 
 In another terminal:
