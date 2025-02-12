@@ -196,7 +196,7 @@ columns = [
             "colors": [[50, white, red], [100, white, green]],
             "minDecimal": 0,
             "maxDecimal": 2,
-            "numberSuffix": "d",
+            "numberSuffix": "%",
         },
     },
     {
