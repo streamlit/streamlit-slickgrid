@@ -268,11 +268,11 @@ options = {
     #
     # Debounce/throttle the input text filter if you have lots of data
     # filterTypingDebounce: 250,
-    "enableExcelExport": True,
     # --
     #
     # Set up export options.
     "enableTextExport": True,
+    "enableExcelExport": True,
     "excelExportOptions": {"sanitizeDataExport": True},
     "textExportOptions": {"sanitizeDataExport": True},
     "externalResources": [
