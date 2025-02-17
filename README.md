@@ -28,8 +28,8 @@ In one terminal:
 cd [this folder]
 python -m venv .venv # One-time only.
 source .venv/bin/activate
-pip install -e .[dev]
-streamlit run streamlit_slickgrid/examples/streamlit_app.py
+pip install -e .
+streamlit run examples/streamlit_app.py
 ```
 
 In another terminal:
