@@ -164,6 +164,8 @@ columns = [
             "minDecimal": 0,
             "maxDecimal": 2,
             "numberSuffix": "d",
+            # You can pass your own styles here.
+            # "style": {"text-align": "left", "padding": "0 0.5ch"},
         },
     },
     {
@@ -187,6 +189,8 @@ columns = [
             "maxDecimal": 2,
             "min": 0,
             "max": 300,
+            # You can pass your own styles here.
+            # "style": {"text-align": "left", "padding": "0 0.5ch"},
         },
     },
     {
@@ -213,6 +217,8 @@ columns = [
             "minDecimal": 0,
             "maxDecimal": 2,
             "numberSuffix": "%",
+            # You can pass your own styles here.
+            # "style": {"text-align": "left", "padding": "0 0.5ch"},
         },
     },
     {
