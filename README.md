@@ -53,6 +53,6 @@ npm run build
 # Build Python library
 cd ../..
 rm dist/*
-python -m build --wheel # or: uv build
+uv build
 # The wheel file is in dist/ now.
 ```

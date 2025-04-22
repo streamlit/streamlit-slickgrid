@@ -157,10 +157,14 @@ const StreamlitSlickGridFormatters = {
     const formattedStr = decimalFormatter(row, cell, value, columnDef, dataContext, grid)
     const [fgColor, bgColor] = getColor(value, columnDef, grid)
 
+    const gridOptions = (grid && typeof grid.getOptions === "function" ? grid.getOptions() : {}) as GridOption
+    const style: Record<string, any> = getValueFromParamsOrFormatterOptions("style", columnDef, gridOptions, [])
+
     return createDomElement("span", {
       style: {
         color: fgColor,
         backgroundColor: bgColor,
+        ...style
       },
       textContent: formattedStr as string,
     })
@@ -247,6 +251,7 @@ const StreamlitSlickGridFormatters = {
     const gridOptions = (grid && typeof grid.getOptions === "function" ? grid.getOptions() : {}) as GridOption
     const min = getValueFromParamsOrFormatterOptions("min", columnDef, gridOptions, 0)
     const max = getValueFromParamsOrFormatterOptions("max", columnDef, gridOptions, 100)
+    const style: Record<string, any> = getValueFromParamsOrFormatterOptions("style", columnDef, gridOptions, [])
 
     const container = createDomElement("div", {
       className: "progress",
@@ -273,6 +278,7 @@ const StreamlitSlickGridFormatters = {
             width: `${inputPct}%`,
             color: fgColor,
             backgroundColor: bgColor,
+            ...style,
           },
         })
       )
